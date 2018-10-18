@@ -34,3 +34,5 @@ done;
 
 do
 cat header.txt recoded.vcf > final_recoded.vcf
+done;
+
