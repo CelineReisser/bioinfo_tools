@@ -17,3 +17,20 @@ awk '$4="A", $5="G"' OFS='\t' input.vcf > recoded.vcf
 # Now to make it usable by VCF reading programs, we need to reattach the header:
 
 cat header.txt recoded.vcf > recoded_final.vcf
+
+
+
+################################################################
+## Complete pipeline from a VCF out of freebayes, or VCFtools: #
+################################################################
+
+do
+grep "^#" in.vcf > header.txt
+done;
+
+do
+grep --line-buffered -v "^#" in.vcf | awk '$4="A", $5="G"' OFS='\t' > recoded.vcf
+done;
+
+do
+cat header.txt recoded.vcf > final_recoded.vcf
