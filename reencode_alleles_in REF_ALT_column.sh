@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+#Written by CMO Reisser, Oct. 2018
 
 # First, you have to remove the integrality of the header of the files, so that the vcf file starts directly with the first SNP.
 # Store the header in another file called header.txt (grep "^#" in.vcf > header.txt)
