@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-#PBS -q mpi
-#PBS -l walltime=24:00:00
-#PBS -l select=1:ncpus=28:mem=115g
-#PBS -o /home1/datawork/creisser/sex_det/98_log_files
+#PBS -q 
+#PBS -l walltime=
+#PBS -l 
+#PBS -o 
 #PBS -N get_homozygotes
 
-DATADIRECTORY=/home1/scratch/creisser/sex_det/07_freebayes
-INDIR=/home1/scratch/creisser/sex_det/07_freebayes
+DATADIRECTORY=
+INDIR=
 
 # Here we focused on a particular individual in column 12, for which we wanted to select only homozygous sites:
 
