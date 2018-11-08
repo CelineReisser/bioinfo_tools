@@ -10,6 +10,7 @@
 # Files to have before starting:
 # - your vcf file that you want to filter (output from Freebayes for example)
 # - a list of SNPs you want to keep (significant_SNPs.txt). The names of those SNPs should be in the form: CHROM_position (that is, the exact location of the SNPs, from the CHROM and Pos columns of your VCF)
+
 # example of significant_SNPs.txt:
 #
 #   scaffold0001_34028
