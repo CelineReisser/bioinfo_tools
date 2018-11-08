@@ -39,8 +39,8 @@ awk 'FNR==NR {a[$1]=$0; next}; $1 in a {print a[$1]}' single_ID_no_header_vcf.vc
 #----------------------------------------
 #Step 4: reformat it so that it is a VCF:
 
-#Remove first column and reattach the header
-awk '{ $1=""; print $0 }' single_ID_no_header_vcf_significant.vcf | cat header.txt - > your_filtered_vcf.vcf
+#Remove first column (and the tabulation separating $1 and $2) and reattach the header
+awk '{ $1=""; print $0 }' single_ID_no_header_vcf_significant.vcf | sed 's/^[ \t]+//g' - | cat header.txt - > your_filtered_vcf.vcf
 
 #-----------------------------
 #Step 5: clean your workspace:
