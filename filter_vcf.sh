@@ -33,7 +33,7 @@ awk '{OFS = "_" ; print $1,$2}' no_header_vcf.vcf | paste - no_header_vcf.vcf > 
 #-----------------------------------------------
 #Step 3: keep only the SNPs that are significant:
 
-grep -f significant_SNPs.txt single_ID_no_header_vcf.vcf > single_ID_no_header_vcf_significant.vcf
+#grep -f significant_SNPs.txt single_ID_no_header_vcf.vcf > single_ID_no_header_vcf_significant.vcf
 awk 'FNR==NR {a[$1]=$0; next}; $1 in a {print a[$1]}' single_ID_no_header_vcf.vcf significant_SNPs.txt > single_ID_no_header_vcf_significant.vcf
 
 #----------------------------------------
