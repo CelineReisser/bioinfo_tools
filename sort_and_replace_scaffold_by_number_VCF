@@ -1,0 +1,13 @@
+
+bcftools sort unsorted.vcf > sorted.vcf
+
+grep "#" sorted.vcf > header.txt
+grep -v "#" sorted.vcf > corp.txt
+grep -v "#" sorted.vcf | cut -f1 | sed 's/scaffold//g' | awk -F'size' '{print $1}' > chromnames.txt
+
+awk 'NR==FNR{a[NR]=$0;next}{$1=a[FNR]}1' chromnames.txt corp.txt > corp2.txt
+
+cat header.txt corp2.txt > outflanks_pcadapt.vcf
+
+rm corp.txt corp2.txt header.txt chromnames.txt
+
