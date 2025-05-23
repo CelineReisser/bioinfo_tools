@@ -1,0 +1,34 @@
+#!/bin/bash
+
+GFF="your_file.gff"
+GENOME="genome.fasta"
+
+GFFREAD=""
+TRANSDEC=""
+
+
+# For Chr1
+CHR="chr1"
+# Filter for chromosome
+awk -v chr=$CHR '$1 == chr' $GFF > ${CHR}_genes.gff
+# Extract CDS
+$GFFREAD
+gffread ${CHR}_genes.gff -g $GENOME -x ${CHR}_cds.fasta
+# Predict proteins
+$TRANSDEC
+TransDecoder.LongOrfs -t ${CHR}_cds.fasta
+TransDecoder.Predict -t ${CHR}_cds.fasta
+
+
+#For Chr16
+
+CHR="chr16"
+# Filter for chromosome
+awk -v chr=$CHR '$1 == chr' $GFF > ${CHR}_genes.gff
+# Extract CDS
+$GFFREAD
+gffread ${CHR}_genes.gff -g $GENOME -x ${CHR}_cds.fasta
+# Predict proteins
+$TRANSDEC
+TransDecoder.LongOrfs -t ${CHR}_cds.fasta
+TransDecoder.Predict -t ${CHR}_cds.fasta
